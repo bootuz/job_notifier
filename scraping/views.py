@@ -15,6 +15,12 @@ def start(message):
     bot.send_message(message.chat.id, text="Welcome")
 
 
+def index(request):
+    bot.remove_webhook()
+    bot.set_webhook(url="https://{}.herokuapp.com/{}".format('job-notifier', TOKEN))
+    return HttpResponse('webhook setted')
+
+
 def scrape(request):
     json_str = request.body.decode('UTF-8')
     update = types.Update.de_json(json_str)
