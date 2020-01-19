@@ -12,7 +12,7 @@ bot = TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, "Welcome")
+    bot.send_message(message.chat.id, text="Welcome")
 
 
 def scrape(request):
