@@ -17,7 +17,7 @@ def start(message):
 
 def index(request):
     bot.remove_webhook()
-    bot.set_webhook(url="https://job-notifier.herokuapp.com/scrape")
+    bot.set_webhook(url="https://{}.herokuapp.com/scrape/{}".format('job-notifier', TOKEN))
     return HttpResponse('webhook setted')
 
 

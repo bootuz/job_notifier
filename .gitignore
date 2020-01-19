@@ -2,3 +2,4 @@ venv/
 .DS_Store
 jobs/__pycache__
 scraping/__pycache__
+.idea/
