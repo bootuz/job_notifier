@@ -17,7 +17,7 @@ def start(message):
 
 def index(request):
     bot.remove_webhook()
-    bot.set_webhook(url="https://baraeja.com/{}".format('scrape'))
+    bot.set_webhook(url="https://www.baraeja.com/{}".format('scrape'))
     return HttpResponse('webhook setted')
 
 
