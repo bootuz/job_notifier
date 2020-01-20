@@ -26,5 +26,4 @@ def scrape(request):
         json_str = request.body.decode('UTF-8')
         update = types.Update.de_json(json_str)
         bot.process_new_updates([update])
-
-    return HttpResponse('success')
+        return HttpResponse('success')
