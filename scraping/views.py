@@ -15,6 +15,11 @@ def start(message):
     bot.send_message(message.chat.id, text="Welcome")
 
 
+@bot.message_handler(commands=['id'])
+def start(message):
+    bot.send_message(message.chat.id, text=f'{message.chat.id}')
+
+
 def index(request):
     bot.remove_webhook()
     bot.set_webhook(url="https://www.baraeja.com/{}".format(os.environ['TOKEN']))

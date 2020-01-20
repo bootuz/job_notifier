@@ -1,3 +1,5 @@
+import os
+
 from django.core.management import BaseCommand
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
@@ -5,6 +7,7 @@ from urllib.request import urlopen
 from django.db import IntegrityError
 
 from scraping.models import Job
+from scraping.views import bot
 
 
 def pages_count():
@@ -44,6 +47,7 @@ def scrape():
             try:
                 Job.objects.create(link=base_url+href, title=title, location=location, salary=salary, company_name=company_name)
                 print(f'{title} added')
+                # send_text = 'https://api.telegram.org/bot' + os.environ["TOKEN"] + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
             except IntegrityError:
                 print(f'{title} already exists')
 
