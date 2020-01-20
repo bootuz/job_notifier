@@ -22,8 +22,9 @@ def index(request):
 
 
 def scrape(request):
-    json_str = request.body.decode('UTF-8')
-    update = types.Update.de_json(json_str)
-    bot.process_new_updates([update])
+    if request.method == 'POST':
+        json_str = request.body.decode('UTF-8')
+        update = types.Update.de_json(json_str)
+        bot.process_new_updates([update])
 
     return HttpResponse('success')
