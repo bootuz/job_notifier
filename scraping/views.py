@@ -15,20 +15,14 @@ def start(message):
     bot.send_message(message.chat.id, text="Welcome")
 
 
-@bot.message_handler(commands=['id'])
-def start(message):
-    bot.send_message(message.chat.id, text=f'{message.chat.id}')
-
-
 def index(request):
     bot.remove_webhook()
-    bot.set_webhook(url="https://www.baraeja.com/{}".format(os.environ['TOKEN']))
+    bot.set_webhook(url="https://job-notifier.herokuapp.com/{}".format(os.environ['TOKEN']))
     return HttpResponse('webhook setted')
 
 
 def scrape(request):
-    if request.method == 'POST':
-        json_str = request.body.decode('UTF-8')
-        update = types.Update.de_json(json_str)
-        bot.process_new_updates([update])
-        return HttpResponse('success')
+    json_str = request.body.decode('UTF-8')
+    update = types.Update.de_json(json_str)
+    bot.process_new_updates([update])
+    return HttpResponse('success')

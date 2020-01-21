@@ -8,7 +8,6 @@ from urllib.request import urlopen
 from django.db import IntegrityError
 
 from scraping.models import Job
-from scraping.views import bot
 
 
 def pages_count():
@@ -58,5 +57,4 @@ class Command(BaseCommand):
     help = "testing"
 
     def handle(self, *args, **options):
-        # print(pages_count())
         scrape()
